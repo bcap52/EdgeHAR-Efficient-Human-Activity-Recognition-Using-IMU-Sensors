@@ -69,18 +69,32 @@ We prioritized Test Accuracy to measure real-world reliability.
 
 ---
 
-### Usage
-
 ### Installation & Usage
 
 1. **Clone the repository:**
    ```bash
    git clone [https://github.com/bcap52/EdgeHAR-Efficient-Human-Activity-Recognition-Using-IMU-Sensors.git](https://github.com/bcap52/EdgeHAR-Efficient-Human-Activity-Recognition-Using-IMU-Sensors.git)
-   ### Prerequisites
-2. * **MATLAB** (R2021a or later recommended).
-* **Statistics and Machine Learning Toolbox**.
+Prerequisites:
 
-3.### Run the Pipeline
-1. Open `main_script.m` in MATLAB.
-2. Ensure the dataset CSV files are located in the specified path.
-3. Run the script to perform preprocessing, feature extraction, and model evaluation.
+MATLAB (R2021a or later recommended).
+
+Statistics and Machine Learning Toolbox.
+
+Generate the Dataset:
+
+Open main_script.m in MATLAB.
+
+Run the script to perform preprocessing and feature extraction.
+
+This will generate the final feature table (e.g., FinalFeatureTable) in your MATLAB Workspace.
+
+Train & Evaluate (Classification Learner App):
+
+Open the Classification Learner App from the MATLAB Apps tab.
+
+Click New Session and select the generated feature table from the Workspace.
+
+Choose Logistic Regression (or other models) to train.
+
+Use the App's interface to validate, test, and view the Confusion Matrix.
+
