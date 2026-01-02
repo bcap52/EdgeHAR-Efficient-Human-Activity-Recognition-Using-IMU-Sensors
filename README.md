@@ -42,7 +42,7 @@ We prioritized Test Accuracy to measure real-world reliability.
     * *Root Cause:* Without a **Barometer**, the acceleration profile of stairs is mathematically identical to walking.
 * **Shuffling (Class 3):** Confused with **Standing** (~18% error) due to subtle movement intensity.
 
-![Test Confusion Matrix](./path/to/your/confusion_matrix_image.png)
+ConfusionMatrix
 *Figure 2: Test Confusion Matrix showing strong diagonal performance for distinct classes.*
 
 ---
