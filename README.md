@@ -25,7 +25,7 @@ We applied a **2.5s sliding window** (125 samples) to extract time-domain featur
 * **Mean:** Captures static orientation (e.g., Thigh vertical vs. horizontal).
 * **Standard Deviation:** Captures movement intensity (e.g., Running vs. Standing).
 
-![Feature Scatter Plot](./path/to/your/scatterplot_image.png)
+https://github.com/bcap52/EdgeHAR-Efficient-Human-Activity-Recognition-Using-IMU-Sensors/blob/main/ScatterPlot
 *Figure 1: Distinct clusters formed by Static (Low Variance) vs. Dynamic (High Variance) activities.*
 
 ---
