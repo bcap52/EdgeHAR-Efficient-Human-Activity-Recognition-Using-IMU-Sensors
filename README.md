@@ -73,8 +73,7 @@ We prioritized Test Accuracy to measure real-world reliability.
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/bcap52/EdgeHAR-Efficient-Human-Activity-Recognition-Using-IMU-Sensors.git](https://github.com/bcap52/EdgeHAR-Efficient-Human-Activity-Recognition-Using-IMU-Sensors.git)
-
+   git clone https://github.com/bcap52/EdgeHAR-Efficient-Human-Activity-Recognition-Using-IMU-Sensors.git
 ## 2. Prerequisites:
 
 - MATLAB (R2021a or later recommended).
