@@ -84,7 +84,7 @@ We prioritized Test Accuracy to measure real-world reliability.
 ## 3. Generate the Dataset:
 
 - Open `IMU_model_19974.mlx` in MATLAB.
-- **⚠️IMPORTANT⚠️** :Ensure the dataset CSV files are located inside a folder named `Data` inside the directory where `IMU_model_19974.mlx` the Matlab script is located , otherwise the script will fail
+- **⚠️IMPORTANT⚠️**: Ensure the dataset CSV files for training are located inside a folder named `Data` inside the directory where `IMU_model_19974.mlx` the Matlab script is located , otherwise the script will fail
 - Run the script to perform preprocessing and feature extraction.
 - This will generate the final feature table named  `Dataset_50HZ_Limited_Train_19974_eachclass` in your MATLAB Workspace.
 
