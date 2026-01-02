@@ -70,8 +70,17 @@ We prioritized Test Accuracy to measure real-world reliability.
 ---
 
 ### Usage
-**Prerequisites:** MATLAB (R2021a+) with Statistics and Machine Learning Toolbox.
 
-1. Clone the repository:
+### Installation & Usage
+
+1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/YourUsername/EdgeHAR.git](https://github.com/YourUsername/EdgeHAR.git)
+   git clone [https://github.com/bcap52/EdgeHAR-Efficient-Human-Activity-Recognition-Using-IMU-Sensors.git](https://github.com/bcap52/EdgeHAR-Efficient-Human-Activity-Recognition-Using-IMU-Sensors.git)
+   ### Prerequisites
+2. * **MATLAB** (R2021a or later recommended).
+* **Statistics and Machine Learning Toolbox**.
+
+3.### Run the Pipeline
+1. Open `main_script.m` in MATLAB.
+2. Ensure the dataset CSV files are located in the specified path.
+3. Run the script to perform preprocessing, feature extraction, and model evaluation.
