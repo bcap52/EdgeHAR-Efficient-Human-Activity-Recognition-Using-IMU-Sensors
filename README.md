@@ -20,12 +20,14 @@ We discovered that a simple linear model outperformed a complex non-linear model
 * **Cleaning:** Discarded the first **250 rows (5s)** of every session to remove sensor initialization artifacts.
 * **Balancing:** Cap limit of **19,974 rows** per class to prevent bias toward dominant activities like Walking.
 
+![activity annotations](https://github.com/bcap52/EdgeHAR-Efficient-Human-Activity-Recognition-Using-IMU-Sensors/blob/main/Activity%20Annotations)) 
+  *The classes that can be predicted by this model*
 **2. Feature Extraction (12-Dim Vector)**
 We applied a **2.5s sliding window** (125 samples) to extract time-domain features:
 * **Mean:** Captures static orientation (e.g., Thigh vertical vs. horizontal).
 * **Standard Deviation:** Captures movement intensity (e.g., Running vs. Standing).
 
-https://github.com/bcap52/EdgeHAR-Efficient-Human-Activity-Recognition-Using-IMU-Sensors/blob/main/ScatterPlot
+![Feature Scatter Plot](https://github.com/bcap52/EdgeHAR-Efficient-Human-Activity-Recognition-Using-IMU-Sensors/blob/main/ScatterPlot)) 
 *Figure 1: Distinct clusters formed by Static (Low Variance) vs. Dynamic (High Variance) activities.*
 
 ---
