@@ -42,7 +42,7 @@ We prioritized Test Accuracy to measure real-world reliability.
     * *Root Cause:* Without a **Barometer**, the acceleration profile of stairs is mathematically identical to walking.
 * **Shuffling (Class 3):** Confused with **Standing** (~18% error) due to subtle movement intensity.
 
-ConfusionMatrix
+![Confusion Matrix](https://raw.githubusercontent.com/bcap52/EdgeHAR-Efficient-Human-Activity-Recognition-Using-IMU-Sensors/17af5ce10973dfcdd6e08e7c0921760ea5429548/ConfusionMatrix)
 *Figure 2: Test Confusion Matrix showing strong diagonal performance for distinct classes.*
 
 ---
