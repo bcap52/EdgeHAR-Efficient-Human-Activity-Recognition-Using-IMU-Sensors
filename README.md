@@ -38,13 +38,15 @@ We discovered that a simple linear model outperformed a complex non-linear model
 
 *What activity each class corresponds to*
 
+---
+
 
 **2. Feature Extraction (12-Dim Vector)**
 We applied a **2.5s sliding window** (125 samples) to extract time-domain features:
 * **Mean:** Captures static orientation (e.g., Thigh vertical vs. horizontal).
 * **Standard Deviation:** Captures movement intensity (e.g., Running vs. Standing).
 
-![Feature Scatter Plot](https://github.com/bcap52/EdgeHAR-Efficient-Human-Activity-Recognition-Using-IMU-Sensors/blob/main/ScatterPlot)) 
+<img src="https://raw.githubusercontent.com/bcap52/EdgeHAR-Efficient-Human-Activity-Recognition-Using-IMU-Sensors/main/ScatterPlot" width="600">
 *Figure 1: Distinct clusters formed by Static (Low Variance) vs. Dynamic (High Variance) activities.*
 
 ---
@@ -62,7 +64,8 @@ We prioritized Test Accuracy to measure real-world reliability.
 * **Shuffling (Class 3):** Confused with **Standing** (~18% error) due to subtle movement intensity.
 
 <img src="https://raw.githubusercontent.com/bcap52/EdgeHAR-Efficient-Human-Activity-Recognition-Using-IMU-Sensors/17af5ce10973dfcdd6e08e7c0921760ea5429548/ConfusionMatrix" width="500">
-*Figure 2: Test Confusion Matrix showing strong diagonal performance for distinct classes.*
+
+*Figure 2: Test Confusion Matrix showing strong diagonal performance for distinct classes*
 
 ---
 
