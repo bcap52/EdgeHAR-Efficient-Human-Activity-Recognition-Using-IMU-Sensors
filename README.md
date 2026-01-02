@@ -74,27 +74,30 @@ We prioritized Test Accuracy to measure real-world reliability.
 1. **Clone the repository:**
    ```bash
    git clone [https://github.com/bcap52/EdgeHAR-Efficient-Human-Activity-Recognition-Using-IMU-Sensors.git](https://github.com/bcap52/EdgeHAR-Efficient-Human-Activity-Recognition-Using-IMU-Sensors.git)
-Prerequisites:
 
-MATLAB (R2021a or later recommended).
+## 2. Prerequisites:
 
-Statistics and Machine Learning Toolbox.
+- MATLAB (R2021a or later recommended).
+- Statistics and Machine Learning Toolbox.
+- Link to the Datasets that we used for training: https://drive.google.com/drive/folders/1wDTIjdsdI3b8swcYLC1aKmRJAtfkY0Kp?usp=sharing
+- Link to the dataset we tested our model on: https://drive.google.com/drive/folders/1vLwEsOHn6wwAkeF_4YtrTygb2JIC1NOA?usp=sharing 
 
-Generate the Dataset:
+## 3. Generate the Dataset:
 
-Open main_script.m in MATLAB.
+- Open `IMU_model_19974.mlx` in MATLAB.
+- Ensure the dataset CSV files are located in the specified path (You would have to change all the file paths for the CSV files we used in the script)
+- Run the script to perform preprocessing and feature extraction.
+- This will generate the final feature table named  `Dataset_50HZ_Limited_Train_19974_eachclass` in your MATLAB Workspace.
 
-Run the script to perform preprocessing and feature extraction.
+## 4. Train & Evaluate (Classification Learner App):
 
-This will generate the final feature table (e.g., FinalFeatureTable) in your MATLAB Workspace.
+- Open the **Classification Learner App** from the MATLAB Apps tab.
+- Click **New Session** and select the generated feature table from the Workspace.
+- Choose **Logistic Regression** (or other models) to train.
+- Use the App's interface to validate, test, and view the Confusion Matrix.
 
-Train & Evaluate (Classification Learner App):
+## 5. Scalability & Inference:
 
-Open the Classification Learner App from the MATLAB Apps tab.
-
-Click New Session and select the generated feature table from the Workspace.
-
-Choose Logistic Regression (or other models) to train.
-
-Use the App's interface to validate, test, and view the Confusion Matrix.
-
+- The pipeline is architected to be modular. If new raw accelerometer data (50Hz) is collected from an edge device, it can be passed through this same feature engineering pipeline.
+- The resulting feature vectors can then be immediately classified by the trained model (exported from the Learner App) to predict activities for new users.
+  
