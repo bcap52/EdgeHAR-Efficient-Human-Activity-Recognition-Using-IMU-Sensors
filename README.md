@@ -36,7 +36,7 @@ We discovered that a simple linear model outperformed a complex non-linear model
 | **130** | cycling (sit, inactive) | cycling (sit) without leg movement |
 
 
-
+*What activity each class corresponds to*
 
 
 **2. Feature Extraction (12-Dim Vector)**
@@ -61,7 +61,7 @@ We prioritized Test Accuracy to measure real-world reliability.
     * *Root Cause:* Without a **Barometer**, the acceleration profile of stairs is mathematically identical to walking.
 * **Shuffling (Class 3):** Confused with **Standing** (~18% error) due to subtle movement intensity.
 
-![Confusion Matrix](https://raw.githubusercontent.com/bcap52/EdgeHAR-Efficient-Human-Activity-Recognition-Using-IMU-Sensors/17af5ce10973dfcdd6e08e7c0921760ea5429548/ConfusionMatrix)
+<img src="https://raw.githubusercontent.com/bcap52/EdgeHAR-Efficient-Human-Activity-Recognition-Using-IMU-Sensors/17af5ce10973dfcdd6e08e7c0921760ea5429548/ConfusionMatrix" width="500">
 *Figure 2: Test Confusion Matrix showing strong diagonal performance for distinct classes.*
 
 ---
