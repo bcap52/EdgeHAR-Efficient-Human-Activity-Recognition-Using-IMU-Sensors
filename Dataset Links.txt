@@ -1,2 +1,0 @@
-Link to the Datasets that we used for training: https://drive.google.com/drive/folders/1wDTIjdsdI3b8swcYLC1aKmRJAtfkY0Kp?usp=sharing
-Link to the dataset we tested our model on: https://drive.google.com/drive/folders/1vLwEsOHn6wwAkeF_4YtrTygb2JIC1NOA?usp=sharing
