@@ -59,7 +59,7 @@ Use this option if you want to regenerate the dataset features from the raw CSV 
 * Open `main_script.mlx` and click **Run**.
 * The script will detect that the processed data is missing and will automatically start reading the raw CSVs, windowing the data, and extracting features before training the model.
 
-# Visualization & Retraining
+## Visualization & Retraining
 
 This repository includes a saved session file for the Classification Learner App, allowing you to explore the data visually or train different models (SVM, KNN, Trees) without writing code.
 
@@ -71,7 +71,7 @@ This repository includes a saved session file for the Classification Learner App
 
 
 
-#### Project Explaination
+### Project Explaination
 
 
 ### Data Pipeline & Feature Engineering
