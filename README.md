@@ -1,7 +1,7 @@
 # EdgeHAR: Efficient Human Activity Recognition Using IMU Sensors
 
 ### Project Overview
-This project addresses the challenge of deploying Human Activity Recognition (HAR) on edge devices with limited processing power. We processed 50Hz accelerometer data from a thigh-mounted IMU to classify distinct activities, including static postures (Sitting, Standing) and dynamic movements (Running, Cycling, Stairs). We used the harth dataset for this project (https://github.com/ntnu-ai-lab/harth-ml-experiments/tree/main/harth)
+This project addresses the challenge of deploying Human Activity Recognition (HAR) on edge devices with limited processing power. We processed 50Hz accelerometer data from 2 three-axial Axivity AX3 accelerometers to classify distinct activities, including static postures (Sitting, Standing) and dynamic movements (Running, Cycling, Stairs). We used the harth dataset for this project (https://github.com/ntnu-ai-lab/harth-ml-experiments/tree/main/harth)
 
 ---
 
@@ -44,7 +44,7 @@ Use this option if you want to run the model immediately using the pre processed
 Use this option if you want to regenerate the dataset features from the raw CSV files yourself (e.g., if you want to see the preprocessing happen in real time).
 
 ### 1. Delete Existing Data:
-* Delete the file `data/processed/ProcessedData.mat` (if it exists).
+* Delete the file `Data/ProcessedData.mat` (if it exists).
 
 ### 2. Download All Datasets:
 * **Training Data:** [Download Here](https://drive.google.com/drive/folders/1wDTIjdsdI3b8swcYLC1aKmRJAtfkY0Kp?usp=sharing)
@@ -74,7 +74,7 @@ This repository includes a saved session file for the Classification Learner App
 # Project Explaination
 
 
-### Data Pipeline & Feature Engineering
+### 1. Data Pipeline & Feature Engineering
 **Preprocessing**
 * **Cleaning:** Discarded the first **250 rows (5s)** of every session to remove sensor initialization artifacts.
 * **Balancing:** Cap limit of **19,974 rows** per class to prevent bias toward dominant activities like Walking.
@@ -100,10 +100,7 @@ This repository includes a saved session file for the Classification Learner App
 ---
 
 
-**Feature Extraction (12-Dim Vector)**
-We applied a **2.5s sliding window** (125 samples) to extract time domain features:
-* **Mean:** Captures static orientation (e.g., Thigh vertical vs. horizontal).
-* **Standard Deviation:** Captures movement intensity (e.g., Running vs. Standing).
+
 
 <h3>2. Feature Extraction (12 Dimension Vector)</h3>
 <p>
@@ -154,32 +151,29 @@ In contrast, the Efficient Logistic Regression model achieved higher accuracy on
 
 ---
 
-#### Detailed Class Performance
+## Detailed Class Performance
 By analyzing the Confusion Matrix (Picture Below), we observed the following performance characteristics:
 
-**Strengths:**
+### Strengths
 
 The model demonstrated high reliability for distinct activities where signal patterns were unique.
 
-* **Sitting (Class 7):** Achieved near-perfect precision due to the distinct static thigh orientation. (**100% Accuracy**)
-* **Lying (Class 8):** Robustly identified due to the unique horizontal sensor axis. (**100% Accuracy**)
-* **Cycling Sit (Class 13):** Accurately identified active cycling while seated. (**97.6% Accuracy**)
-* **Running (Class 2):** The high standard deviation allowed for easy recognition of this high-intensity state. (**95.7% Accuracy**)
-* **Standing (Class 6):** Showed strong stability with minimal confusion against other static classes. (**90.5% Accuracy**)
-* **Cycling Stand (Class 14):** Successfully distinguished active standing cycling from standard standing. (**100% Accuracy**)
-* **Walking (Class 1):** Effectively captured the standard gait pattern, though frequently confused with Shuffling. (**~97% Accuracy**)
+* **Sitting (Class 7):** Achieved near-perfect precision due to the distinct static thigh orientation. (Accuracy: 99.9% | Precision: 100.0% | F1: 99.9%)
+* **Lying (Class 8):** Robustly identified due to the unique horizontal sensor axis. (Accuracy: 100.0% | Precision: 99.4% | F1: 99.7%)
+* **Cycling Sit (Class 13):** Accurately identified active cycling while seated. (Accuracy: 97.6% | Precision: 97.6% | F1: 97.6%)
+* **Running (Class 2):** The high standard deviation allowed for easy recognition of this high-intensity state. (Accuracy: 95.7% | Precision: 100.0% | F1: 97.8%)
+* **Standing (Class 6):** Showed strong stability with minimal confusion against other static classes. (Accuracy: 90.5% | Precision: 93.9% | F1: 92.2%)
+* **Cycling Stand (Class 14):** Successfully distinguished active standing cycling from standard standing. (Accuracy: 84.9% | Precision: 100.0% | F1: 91.8%)
+* **Walking (Class 1):** Effectively captured the standard gait pattern, though frequently confused with Shuffling. (Accuracy: 70.5% | Precision: 96.9% | F1: 81.6%)
 
+### Weaknesses
 
-**Weaknesses:**
+Performance degraded significantly for ambiguous activities or those with insufficient test data. These are minor activities and rare for a person to do during a day so we can safely ignore and drop these classes as they would be ignored in a deployment, however I kept them here for comprehensive analysis. This can be fixed with data from a barometer, altimeter and using sensor fusion which would result in more features which in turn would help us differentiate these weak classes from other classes hence achieving a higher accuracy score.
 
-Performance degraded significantly for ambiguous activities or those with insufficient test data. These are minor activities and rare for a person to do during a day so we can safely ignore and drop these classes as they would be ignored in a deployment, however i kept them here for comprehensive analysis. This can be fixed with data from a barometer, altimeter and using sensor fusion which would result in more features which in turn would help us differentiate these weak classes from other classes hence achieving a higher accuracy score
-
-* **Shuffling (Class 3):** Frequently misclassified as Standing because the movement intensity was too subtle. (**48% Accuracy**)
-* **Cycling Inactive (Class 130):** Sample size was too low to determine reliability, with only 2 instances available in the test set. (**Insufficient Data**)
-* **Stairs Ascending (Class 4):** Indistinguishable from Walking in the time domain without an altimeter. (**33.3% Accuracy**)
-* **Stairs Descending (Class 5):** Misclassified as Walking due to nearly identical kinematic signatures. (**5.0% Accuracy**)
-* 
-
+* **Shuffling (Class 3):** Frequently misclassified as Standing because the movement intensity was too subtle. (Accuracy: 81.8% | Precision: 47.1% | F1: 59.7%)
+* **Cycling Inactive (Class 130):** Sample size was too low to determine reliability, with only 2 instances available in the test set. (Accuracy: 100.0% | Precision: 10.5% | F1: 19.0%)
+* **Stairs Ascending (Class 4):** Indistinguishable from Walking in the time domain without an altimeter. (Accuracy: 33.3% | Precision: 4.5% | F1: 8.0%)
+* **Stairs Descending (Class 5):** Misclassified as Walking due to nearly identical kinematic signatures. (Accuracy: 5.0% | Precision: 100.0% | F1: 9.5%)
 <br>
 
 <div align="center">
@@ -192,7 +186,7 @@ Performance degraded significantly for ambiguous activities or those with insuff
 
 
 
- **Scalability & Inference:**
+ ## Scalability & Inference
 
 - The pipeline is architected to be modular. If new raw accelerometer data (50Hz) is collected from an edge device, it can be passed through this same feature engineering pipeline.
 - The model immediately classifies new feature vectors and is architecturally optimized to be ported to edge devices with minimal adaptation.
