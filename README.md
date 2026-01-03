@@ -68,7 +68,10 @@ This repository includes a saved session file for the Classification Learner App
 3. Navigate to `src/Classification_LearnerApp_Workspace.mat` and open it.
 4. You can now view detailed Confusion Matrices, ROC Curves, and Parallel Coordinate Plots, or train new models on the dataset.
 
-## The Data Flow
+
+
+
+#### Project Explaination
 
 
 ### Data Pipeline & Feature Engineering
@@ -114,7 +117,7 @@ We applied a **2.5s sliding window** (125 samples) to extract time domain featur
 <table>
   <tr>
     <td width="65%">
-      <img src="https://raw.githubusercontent.com/bcap52/EdgeHAR-Efficient-Human-Activity-Recognition-Using-IMU-Sensors/main/ScatterPlot" width="100%" alt="Feature Scatter Plot">
+      <img src="https://raw.githubusercontent.com/bcap52/EdgeHAR-Efficient-Human-Activity-Recognition-Using-IMU-Sensors/main/Visualizations/ScatterPlot" width="100%" alt="Feature Scatter Plot">
       <br>
       <em>Figure 1: Distinct clusters formed by Static (Low Variance) vs. Dynamic (High Variance) activities.</em>
     </td>
