@@ -121,26 +121,26 @@ Performance degraded significantly for ambiguous activities or those with insuff
 
 ---
 
-### Installation & Usage
+## 4. Installation & Usage
 
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/bcap52/EdgeHAR-Efficient-Human-Activity-Recognition-Using-IMU-Sensors.git
-## 2. Prerequisites:
+## Prerequisites:
 
 - MATLAB (R2021a or later recommended).
 - Statistics and Machine Learning Toolbox.
 - Link to the Datasets that we used for training: https://drive.google.com/drive/folders/1wDTIjdsdI3b8swcYLC1aKmRJAtfkY0Kp?usp=sharing
 - Link to the dataset we tested our model on: https://drive.google.com/drive/folders/1vLwEsOHn6wwAkeF_4YtrTygb2JIC1NOA?usp=sharing 
 
-## 3. Generate the Dataset:
+## Generate the Dataset:
 
 - Open `IMU_model_19974.mlx` in MATLAB.
 - **⚠️IMPORTANT⚠️**: Ensure the dataset CSV files for training are located inside a folder named `Data` inside the directory where `IMU_model_19974.mlx` the Matlab script is located , otherwise the script will fail
 - Run the script to perform preprocessing and feature extraction.
 - This will generate the final feature table named  `Dataset_50HZ_Limited_Train_19974_eachclass` in your MATLAB Workspace.
 
-## 4. Train & Evaluate (Classification Learner App):
+## Train & Evaluate (Classification Learner App):
 
 - Open the **Classification Learner App** from the MATLAB Apps tab.
 - Click **New Session** and select the generated feature table from the Workspace.
