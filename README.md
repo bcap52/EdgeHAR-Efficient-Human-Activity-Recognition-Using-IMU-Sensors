@@ -158,10 +158,10 @@ By analyzing the Confusion Matrix (Picture Below), we observed the following per
 
 The model demonstrated high reliability for distinct activities where signal patterns were unique.
 
-* **Sitting (Class 7):** Achieved near-perfect precision due to the distinct static thigh orientation. (Accuracy: 99.9% | Precision: 100.0% | F1: 99.9%)
+* **Sitting (Class 7):** Achieved near perfect precision due to the distinct static thigh orientation. (Accuracy: 99.9% | Precision: 100.0% | F1: 99.9%)
 * **Lying (Class 8):** Robustly identified due to the unique horizontal sensor axis. (Accuracy: 100.0% | Precision: 99.4% | F1: 99.7%)
 * **Cycling Sit (Class 13):** Accurately identified active cycling while seated. (Accuracy: 97.6% | Precision: 97.6% | F1: 97.6%)
-* **Running (Class 2):** The high standard deviation allowed for easy recognition of this high-intensity state. (Accuracy: 95.7% | Precision: 100.0% | F1: 97.8%)
+* **Running (Class 2):** The high standard deviation allowed for easy recognition of this high intensity state. (Accuracy: 95.7% | Precision: 100.0% | F1: 97.8%)
 * **Standing (Class 6):** Showed strong stability with minimal confusion against other static classes. (Accuracy: 90.5% | Precision: 93.9% | F1: 92.2%)
 * **Cycling Stand (Class 14):** Successfully distinguished active standing cycling from standard standing. (Accuracy: 84.9% | Precision: 100.0% | F1: 91.8%)
 * **Walking (Class 1):** Effectively captured the standard gait pattern, though frequently confused with Shuffling. (Accuracy: 70.5% | Precision: 96.9% | F1: 81.6%)
