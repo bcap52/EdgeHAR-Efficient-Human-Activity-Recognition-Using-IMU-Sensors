@@ -100,6 +100,8 @@ The model demonstrated high reliability for distinct activities where signal pat
 * **Walking (Class 1):** Effectively captured the standard gait pattern, though frequently confused with Shuffling. (**~97% Accuracy**)
 
 **Weaknesses**
+
+
 Performance degraded significantly for ambiguous activities or those with insufficient test data. These are minor activities and rare for a person to do during a day so we can safely ignore and drop these classes, however i kept them for comprehensive analysis. This can be fixed with data from a barometer, altimeter and using sensor fusion which would result in more features which in turn would help us differentiate these weak classes from other classes hence achieving a higher accuracy score
 
 * **Shuffling (Class 3):** Frequently misclassified as Standing because the movement intensity was too subtle. (**48% Accuracy**)
