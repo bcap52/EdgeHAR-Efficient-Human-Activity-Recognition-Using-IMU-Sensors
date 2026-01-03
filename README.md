@@ -25,11 +25,11 @@ You have two options for running this project.
 
 ## Option 1: Automated Pipeline (Fastest)
 
-Use this option if you want to run the model immediately using the pre-processed data and pre-trained model included in this repository.
+Use this option if you want to run the model immediately using the pre processed data and pre trained model included in this repository.
 
 ### 1. Download Testing Data:
 * Download the Testing Datasets folder from this link: [Download Test Data](https://drive.google.com/drive/folders/1Z_0K0mR285lMQ2ECFdFmGVpV7OdgCjWs?usp=sharing)
-* Place the `Testing Datasets` folder in the root directory of this repository (same folder as `main_script.mlx`).
+* Place the `Testing Datasets` folder downloaded from the link in the root directory of this repository (same folder as `main_script.mlx`).
 
 ### 2. Verify Files:
 * Ensure `src/`, `models/`, and `Data/ProcessedData.mat` are present in your directory (these are included in the repo).
@@ -41,7 +41,7 @@ Use this option if you want to run the model immediately using the pre-processed
 
 ## Option 2: Process from Scratch (Raw Data)
 
-Use this option if you want to regenerate the dataset features from the raw CSV files yourself (e.g., if you want to see the preprocessing happen in real-time).
+Use this option if you want to regenerate the dataset features from the raw CSV files yourself (e.g., if you want to see the preprocessing happen in real time).
 
 ### 1. Delete Existing Data:
 * Delete the file `data/processed/ProcessedData.mat` (if it exists).
@@ -53,11 +53,20 @@ Use this option if you want to regenerate the dataset features from the raw CSV 
 ### 3. Organize Folders:
 * Create a folder named `Data` in the root directory and place all Training CSV files inside it.
 * Place the `Testing Datasets` folder in the root directory with all Testing CSV files inside it.
+* Ensure `src/`, `models/`, are present in your directory (these are included in the repo).
 
 ### 4. Run the Script:
 * Open `main_script.mlx` and click **Run**.
 * The script will detect that the processed data is missing and will automatically start reading the raw CSVs, windowing the data, and extracting features before training the model.
 
+# Visualization & Retraining
+
+This repository includes a saved session file for the Classification Learner App, allowing you to explore the data visually or train different models (SVM, KNN, Trees) without writing code.
+
+1. Open the Classification Learner app in MATLAB.
+2. In the "New Session" section, click the arrow and select **Open Session**.
+3. Navigate to `src/Classification_LearnerApp_Workspace.mat` and open it.
+4. You can now view detailed Confusion Matrices, ROC Curves, and Parallel Coordinate Plots, or train new models on the dataset.
 
 
 ### Data Pipeline & Feature Engineering
@@ -181,5 +190,5 @@ Performance degraded significantly for ambiguous activities or those with insuff
  **Scalability & Inference:**
 
 - The pipeline is architected to be modular. If new raw accelerometer data (50Hz) is collected from an edge device, it can be passed through this same feature engineering pipeline.
-- The resulting feature vectors can then be immediately classified by the trained model (exported from the Learner App) to predict activities for new users.
+- The model immediately classifies new feature vectors and is architecturally optimized to be ported to edge devices with minimal adaptation.
   
