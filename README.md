@@ -88,7 +88,8 @@ In contrast, the Efficient Logistic Regression model achieved higher accuracy on
 #### Detailed Class Performance
 By analyzing the Confusion Matrix (Picture Below), we observed the following performance characteristics:
 
-**Strengths**
+**Strengths:**
+
 The model demonstrated high reliability for distinct activities where signal patterns were unique.
 
 * **Sitting (Class 7):** Achieved near-perfect precision due to the distinct static thigh orientation. (**100% Accuracy**)
@@ -99,8 +100,7 @@ The model demonstrated high reliability for distinct activities where signal pat
 * **Cycling Stand (Class 14):** Successfully distinguished active standing cycling from standard standing. (**100% Accuracy**)
 * **Walking (Class 1):** Effectively captured the standard gait pattern, though frequently confused with Shuffling. (**~97% Accuracy**)
 
-**Weaknesses**
-
+**Weaknesses:**
 
 Performance degraded significantly for ambiguous activities or those with insufficient test data. These are minor activities and rare for a person to do during a day so we can safely ignore and drop these classes, however i kept them for comprehensive analysis. This can be fixed with data from a barometer, altimeter and using sensor fusion which would result in more features which in turn would help us differentiate these weak classes from other classes hence achieving a higher accuracy score
 
