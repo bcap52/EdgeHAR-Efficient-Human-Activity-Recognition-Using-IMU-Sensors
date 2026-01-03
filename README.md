@@ -5,16 +5,6 @@ This project addresses the challenge of deploying Human Activity Recognition (HA
 
 ---
 
-### Key Findings: The "Performance Inversion"
-We discovered that a simple linear model outperformed a complex non-linear model on unseen data, proving that linear boundaries were more robust to subject-specific noise.
-
-| Model | Training Acc. | Test Acc. | Verdict |
-| :--- | :--- | :--- | :--- |
-| **Medium KNN** (Non-Linear) | **~92.6%** | ~91.2% | Signs of Overfitting |
-| **Efficient Logistic Regression** | ~90.3% | **~93.2%** | **Selected (Better Generalization)** |
-
----
-
 ### Data Pipeline & Feature Engineering
 **1. Preprocessing**
 * **Cleaning:** Discarded the first **250 rows (5s)** of every session to remove sensor initialization artifacts.
@@ -81,22 +71,50 @@ We applied a **2.5s sliding window** (125 samples) to extract time domain featur
 
 ---
 
-### Performance Analysis
-We prioritized Test Accuracy to measure real world reliability.
+### 3. Performance Analysis
 
-**Strengths (High Reliability)**
-* **Static Postures:** Near perfect precision for **Sitting (99.9%)** and **Lying (100%)** due to distinct thigh angles.
-* **Dynamic High-Intensity:** **Running (95.7%)** and **Active Cycling (97.6%)** were easily segmented by high variance.
+#### Overall Model Evaluation
+We evaluated two different models to determine the best balance between complexity and reliability using Matlab's Classification Learner App. While the Non-Linear KNN model achieved higher accuracy during training, it showed signs of slight overfitting.
 
-**Limitations (Sensor Physics)**
-* **Stairs (Classes 4 & 5):** High misclassification with **Walking** (<33% accuracy).
-    * *Root Cause:* Without a **Barometer**, the acceleration profile of stairs is mathematically identical to walking.
-* **Shuffling (Class 3):** Confused with **Standing** (~18% error) due to subtle movement intensity.
+In contrast, the Efficient Logistic Regression model achieved higher accuracy on unseen data than on training data. This indicates that the linear decision boundaries were more robust and generalized better to new subjects for this data
 
-<img src="https://raw.githubusercontent.com/bcap52/EdgeHAR-Efficient-Human-Activity-Recognition-Using-IMU-Sensors/17af5ce10973dfcdd6e08e7c0921760ea5429548/ConfusionMatrix" width="500">
+| Model | Training Acc. | Test Acc. (Unseen Data) | Verdict |
+| :--- | :--- | :--- | :--- |
+| **Medium KNN** (Non-Linear) | ~92.6% | ~91.2% | Signs of Overfitting |
+| **Logistic Regression** | ~90.3% | **~93.2%** | **Selected (Better Generalization)** |
 
-*Figure 2: Test Confusion Matrix showing strong diagonal performance for distinct classes*
+---
 
+#### Detailed Class Performance
+By analyzing the Confusion Matrix (Picture Below), we observed the following performance characteristics:
+
+**Strengths**
+The model demonstrated high reliability for distinct activities where signal patterns were unique.
+
+* **Sitting (Class 7):** Achieved near-perfect precision due to the distinct static thigh orientation. (**100% Accuracy**)
+* **Lying (Class 8):** Robustly identified due to the unique horizontal sensor axis. (**100% Accuracy**)
+* **Cycling Sit (Class 13):** Accurately identified active cycling while seated. (**97.6% Accuracy**)
+* **Running (Class 2):** The high standard deviation allowed for easy recognition of this high-intensity state. (**95.7% Accuracy**)
+* **Standing (Class 6):** Showed strong stability with minimal confusion against other static classes. (**90.5% Accuracy**)
+* **Cycling Stand (Class 14):** Successfully distinguished active standing cycling from standard standing. (**100% Accuracy**)
+* **Walking (Class 1):** Effectively captured the standard gait pattern, though frequently confused with Shuffling. (**~97% Accuracy**)
+
+**Weaknesses**
+Performance degraded significantly for ambiguous activities or those with insufficient test data. These are minor activities and rare for a person to do during a day so we can safely ignore and drop these classes, however i kept them for comprehensive analysis. This can be fixed with data from a barometer, altimeter and using sensor fusion which would result in more features which in turn would help us differentiate these weak classes from other classes hence achieving a higher accuracy score
+
+* **Shuffling (Class 3):** Frequently misclassified as Standing because the movement intensity was too subtle. (**48% Accuracy**)
+* **Cycling Inactive (Class 130):** Sample size was too low to determine reliability, with only 2 instances available in the test set. (**Insufficient Data**)
+* **Stairs Ascending (Class 4):** Indistinguishable from Walking in the time domain without an altimeter. (**33.3% Accuracy**)
+* **Stairs Descending (Class 5):** Misclassified as Walking due to nearly identical kinematic signatures. (**5.0% Accuracy**)
+* 
+
+<br>
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/bcap52/EdgeHAR-Efficient-Human-Activity-Recognition-Using-IMU-Sensors/17af5ce10973dfcdd6e08e7c0921760ea5429548/ConfusionMatrix" width="550">
+  <br>
+  <em>Figure 2: Test Confusion Matrix displaying strong diagonal density for Static/Dynamic classes.</em>
+</div>
 ---
 
 ### Installation & Usage
