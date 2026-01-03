@@ -126,28 +126,28 @@ Performance degraded significantly for ambiguous activities or those with insuff
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/bcap52/EdgeHAR-Efficient-Human-Activity-Recognition-Using-IMU-Sensors.git
-## Prerequisites:
+**Prerequisites:**
 
 - MATLAB (R2021a or later recommended).
 - Statistics and Machine Learning Toolbox.
 - Link to the Datasets that we used for training: https://drive.google.com/drive/folders/1wDTIjdsdI3b8swcYLC1aKmRJAtfkY0Kp?usp=sharing
 - Link to the dataset we tested our model on: https://drive.google.com/drive/folders/1vLwEsOHn6wwAkeF_4YtrTygb2JIC1NOA?usp=sharing 
 
-## Generate the Dataset:
+ **Generate the Dataset:**
 
 - Open `IMU_model_19974.mlx` in MATLAB.
 - **⚠️IMPORTANT⚠️**: Ensure the dataset CSV files for training are located inside a folder named `Data` inside the directory where `IMU_model_19974.mlx` the Matlab script is located , otherwise the script will fail
 - Run the script to perform preprocessing and feature extraction.
 - This will generate the final feature table named  `Dataset_50HZ_Limited_Train_19974_eachclass` in your MATLAB Workspace.
 
-## Train & Evaluate (Classification Learner App):
+ **Train & Evaluate (Classification Learner App):**
 
 - Open the **Classification Learner App** from the MATLAB Apps tab.
 - Click **New Session** and select the generated feature table from the Workspace.
 - Choose **Logistic Regression** (or other models) to train.
 - Use the App's interface to validate, test, and view the Confusion Matrix.
 
-## 5. Scalability & Inference:
+ **5. Scalability & Inference:**
 
 - The pipeline is architected to be modular. If new raw accelerometer data (50Hz) is collected from an edge device, it can be passed through this same feature engineering pipeline.
 - The resulting feature vectors can then be immediately classified by the trained model (exported from the Learner App) to predict activities for new users.
