@@ -79,8 +79,6 @@ We applied a **2.5s sliding window** (125 samples) to extract time-domain featur
   </tr>
 </table>
 
-*Figure 1: Distinct clusters formed by Static (Low Variance) vs. Dynamic (High Variance) activities.*
-
 ---
 
 ### Performance Analysis
