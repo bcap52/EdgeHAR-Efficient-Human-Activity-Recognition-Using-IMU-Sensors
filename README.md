@@ -42,7 +42,7 @@ We discovered that a simple linear model outperformed a complex non-linear model
 
 
 **2. Feature Extraction (12-Dim Vector)**
-We applied a **2.5s sliding window** (125 samples) to extract time-domain features:
+We applied a **2.5s sliding window** (125 samples) to extract time domain features:
 * **Mean:** Captures static orientation (e.g., Thigh vertical vs. horizontal).
 * **Standard Deviation:** Captures movement intensity (e.g., Running vs. Standing).
 
@@ -82,10 +82,10 @@ We applied a **2.5s sliding window** (125 samples) to extract time-domain featur
 ---
 
 ### Performance Analysis
-We prioritized Test Accuracy to measure real-world reliability.
+We prioritized Test Accuracy to measure real world reliability.
 
 **Strengths (High Reliability)**
-* **Static Postures:** Near-perfect precision for **Sitting (99.9%)** and **Lying (100%)** due to distinct thigh angles.
+* **Static Postures:** Near perfect precision for **Sitting (99.9%)** and **Lying (100%)** due to distinct thigh angles.
 * **Dynamic High-Intensity:** **Running (95.7%)** and **Active Cycling (97.6%)** were easily segmented by high variance.
 
 **Limitations (Sensor Physics)**
