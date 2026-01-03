@@ -75,7 +75,7 @@ This repository includes a saved session file for the Classification Learner App
 
 
 ### Data Pipeline & Feature Engineering
-**1. Preprocessing**
+**Preprocessing**
 * **Cleaning:** Discarded the first **250 rows (5s)** of every session to remove sensor initialization artifacts.
 * **Balancing:** Cap limit of **19,974 rows** per class to prevent bias toward dominant activities like Walking.
 
@@ -100,12 +100,12 @@ This repository includes a saved session file for the Classification Learner App
 ---
 
 
-**2. Feature Extraction (12-Dim Vector)**
+**Feature Extraction (12-Dim Vector)**
 We applied a **2.5s sliding window** (125 samples) to extract time domain features:
 * **Mean:** Captures static orientation (e.g., Thigh vertical vs. horizontal).
 * **Standard Deviation:** Captures movement intensity (e.g., Running vs. Standing).
 
-<h3>2. Feature Extraction (12-Dim Vector)</h3>
+<h3>2. Feature Extraction (12 Dimension Vector)</h3>
 <p>
   We applied a <strong>2.5s sliding window</strong> (125 samples) to extract time-domain features:
   <ul>
