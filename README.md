@@ -147,7 +147,7 @@ Performance degraded significantly for ambiguous activities or those with insuff
 - Choose **Logistic Regression** (or other models) to train.
 - Use the App's interface to validate, test, and view the Confusion Matrix.
 
- **5. Scalability & Inference:**
+ **Scalability & Inference:**
 
 - The pipeline is architected to be modular. If new raw accelerometer data (50Hz) is collected from an edge device, it can be passed through this same feature engineering pipeline.
 - The resulting feature vectors can then be immediately classified by the trained model (exported from the Learner App) to predict activities for new users.
