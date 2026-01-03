@@ -190,4 +190,6 @@ Performance degraded significantly for ambiguous activities or those with insuff
 
 - The pipeline is architected to be modular. If new raw accelerometer data (50Hz) is collected from an edge device, it can be passed through this same feature engineering pipeline.
 - The model immediately classifies new feature vectors and is architecturally optimized to be ported to edge devices with minimal adaptation.
+
+  #### Generative AI was used as a minor helping tool under the [Generative AI guidelines](https://github.com/mathworks/MATLAB-Simulink-Challenge-Project-Hub/wiki/Generative-AI-Guidelines)
   
