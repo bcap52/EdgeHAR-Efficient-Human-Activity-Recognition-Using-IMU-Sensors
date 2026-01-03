@@ -46,7 +46,39 @@ We applied a **2.5s sliding window** (125 samples) to extract time-domain featur
 * **Mean:** Captures static orientation (e.g., Thigh vertical vs. horizontal).
 * **Standard Deviation:** Captures movement intensity (e.g., Running vs. Standing).
 
-<img src="https://raw.githubusercontent.com/bcap52/EdgeHAR-Efficient-Human-Activity-Recognition-Using-IMU-Sensors/main/ScatterPlot" width="600">
+<h3>2. Feature Extraction (12-Dim Vector)</h3>
+<p>
+  We applied a <strong>2.5s sliding window</strong> (125 samples) to extract time-domain features:
+  <ul>
+    <li><strong>Mean:</strong> Captures static orientation (e.g., Thigh vertical vs. horizontal).</li>
+    <li><strong>Standard Deviation:</strong> Captures movement intensity (e.g., Running vs. Standing).</li>
+  </ul>
+</p>
+
+<table>
+  <tr>
+    <td width="65%">
+      <img src="https://raw.githubusercontent.com/bcap52/EdgeHAR-Efficient-Human-Activity-Recognition-Using-IMU-Sensors/main/ScatterPlot" width="100%" alt="Feature Scatter Plot">
+      <br>
+      <em>Figure 1: Distinct clusters formed by Static (Low Variance) vs. Dynamic (High Variance) activities.</em>
+    </td>
+    <td width="35%" valign="top">
+      <h3>Legend</h3>
+      <img src="https://img.shields.io/badge/1%20Walking-0072BD?style=flat&labelColor=0072BD&logoWidth=0"> <br>
+      <img src="https://img.shields.io/badge/2%20Running-D95319?style=flat&labelColor=D95319"> <br>
+      <img src="https://img.shields.io/badge/3%20Shuffling-EDB120?style=flat&labelColor=EDB120"> <br>
+      <img src="https://img.shields.io/badge/4%20Stairs%20(Up)-7E2F8E?style=flat&labelColor=7E2F8E"> <br>
+      <img src="https://img.shields.io/badge/5%20Stairs%20(Down)-77AC30?style=flat&labelColor=77AC30"> <br>
+      <img src="https://img.shields.io/badge/6%20Standing-4DBEEE?style=flat&labelColor=4DBEEE"> <br>
+      <img src="https://img.shields.io/badge/7%20Sitting-A2142F?style=flat&labelColor=A2142F"> <br>
+      <img src="https://img.shields.io/badge/8%20Lying-FFD700?style=flat&labelColor=FFD700"> <br>
+      <img src="https://img.shields.io/badge/13%20Cycling%20(Sit)-4169E1?style=flat&labelColor=4169E1"> <br>
+      <img src="https://img.shields.io/badge/14%20Cycling%20(Stand)-FF0000?style=flat&labelColor=FF0000"> <br>
+      <img src="https://img.shields.io/badge/130%20Cycling%20(Inactive)-008080?style=flat&labelColor=008080">
+    </td>
+  </tr>
+</table>
+
 *Figure 1: Distinct clusters formed by Static (Low Variance) vs. Dynamic (High Variance) activities.*
 
 ---
