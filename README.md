@@ -5,6 +5,61 @@ This project addresses the challenge of deploying Human Activity Recognition (HA
 
 ---
 
+# Prerequisites & Setup
+
+To run this project, ensure you have the following installed:
+
+* MATLAB (R2021a or later recommended)
+* Statistics and Machine Learning Toolbox
+
+# Getting Started
+
+**Clone the repository:**
+```bash
+git clone https://github.com/bcap52/EdgeHAR-Efficient-Human-Activity-Recognition-Using-IMU-Sensors.git
+```
+
+# How to Run
+
+You have two options for running this project.
+
+## Option 1: Automated Pipeline (Fastest)
+
+Use this option if you want to run the model immediately using the pre-processed data and pre-trained model included in this repository.
+
+### 1. Download Testing Data:
+* Download the Testing Datasets folder from this link: [Download Test Data](https://drive.google.com/drive/folders/1Z_0K0mR285lMQ2ECFdFmGVpV7OdgCjWs?usp=sharing)
+* Place the `Testing Datasets` folder in the root directory of this repository (same folder as `main_script.mlx`).
+
+### 2. Verify Files:
+* Ensure `src/`, `models/`, and `Data/ProcessedData.mat` are present in your directory (these are included in the repo).
+
+### 3. Run the Script:
+* Open `main_script.mlx` in MATLAB.
+* Click **Run**.
+* The script will instantly load the processed data and the trained model to display the results.
+
+## Option 2: Process from Scratch (Raw Data)
+
+Use this option if you want to regenerate the dataset features from the raw CSV files yourself (e.g., if you want to see the preprocessing happen in real-time).
+
+### 1. Delete Existing Data:
+* Delete the file `data/processed/ProcessedData.mat` (if it exists).
+
+### 2. Download All Datasets:
+* **Training Data:** [Download Here](https://drive.google.com/drive/folders/1wDTIjdsdI3b8swcYLC1aKmRJAtfkY0Kp?usp=sharing)
+* **Testing Data:** [Download Here](https://drive.google.com/drive/folders/1Z_0K0mR285lMQ2ECFdFmGVpV7OdgCjWs?usp=sharing)
+
+### 3. Organize Folders:
+* Create a folder named `Data` in the root directory and place all Training CSV files inside it.
+* Place the `Testing Datasets` folder in the root directory with all Testing CSV files inside it.
+
+### 4. Run the Script:
+* Open `main_script.mlx` and click **Run**.
+* The script will detect that the processed data is missing and will automatically start reading the raw CSVs, windowing the data, and extracting features before training the model.
+
+
+
 ### Data Pipeline & Feature Engineering
 **1. Preprocessing**
 * **Cleaning:** Discarded the first **250 rows (5s)** of every session to remove sensor initialization artifacts.
@@ -121,31 +176,7 @@ Performance degraded significantly for ambiguous activities or those with insuff
 
 ---
 
-## 4. Installation & Usage
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/bcap52/EdgeHAR-Efficient-Human-Activity-Recognition-Using-IMU-Sensors.git
-**Prerequisites:**
-
-- MATLAB (R2021a or later recommended).
-- Statistics and Machine Learning Toolbox.
-- Link to the Datasets that we used for training: https://drive.google.com/drive/folders/1wDTIjdsdI3b8swcYLC1aKmRJAtfkY0Kp?usp=sharing
-- Link to the dataset we tested our model on: https://drive.google.com/drive/folders/1vLwEsOHn6wwAkeF_4YtrTygb2JIC1NOA?usp=sharing 
-
- **Generate the Dataset:**
-
-- Open `IMU_model_19974.mlx` in MATLAB.
-- **⚠️IMPORTANT⚠️**: Ensure the dataset CSV files for training are located inside a folder named `Data` inside the directory where `IMU_model_19974.mlx` the Matlab script is located , otherwise the script will fail
-- Run the script to perform preprocessing and feature extraction.
-- This will generate the final feature table named  `Dataset_50HZ_Limited_Train_19974_eachclass` in your MATLAB Workspace.
-
- **Train & Evaluate (Classification Learner App):**
-
-- Open the **Classification Learner App** from the MATLAB Apps tab.
-- Click **New Session** and select the generated feature table from the Workspace.
-- Choose **Logistic Regression** (or other models) to train.
-- Use the App's interface to validate, test, and view the Confusion Matrix.
 
  **Scalability & Inference:**
 
