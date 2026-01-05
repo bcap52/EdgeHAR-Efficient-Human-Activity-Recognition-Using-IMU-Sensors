@@ -1,7 +1,7 @@
 # EdgeHAR: Efficient Human Activity Recognition Using IMU Sensors
 
 ### Project Overview
-This project addresses the challenge of deploying Human Activity Recognition (HAR) on edge devices with limited processing power. We processed 50Hz accelerometer data from 2 three-axial Axivity AX3 accelerometers to classify distinct activities, including static postures (Sitting, Standing) and dynamic movements (Running, Cycling, Stairs). We used the harth dataset for this project (https://github.com/ntnu-ai-lab/harth-ml-experiments/tree/main/harth)
+This project addresses the challenge of deploying Human Activity Recognition (HAR) on edge devices with limited processing power. We processed 50Hz accelerometer data from 2 three-axial Axivity AX3 accelerometers to classify distinct activities, including static postures (Sitting, Standing) and dynamic movements (Running, Cycling, Stairs).
 
 This repo is a submission Solution to MATLAB and Simulink Challenge project <'232'> <'Human Motion Recognition Using IMUs'>
 
@@ -196,6 +196,9 @@ Performance degraded significantly for ambiguous activities or those with insuff
 
 - The pipeline is architected to be modular. If new raw accelerometer data (50Hz) is collected from an edge device, it can be passed through this same feature engineering pipeline.
 - The model immediately classifies new feature vectors and is architecturally optimized to be ported to edge devices with minimal adaptation.
+
+## References 
+ - We used the harth dataset as the foundation for this project available at: https://github.com/ntnu-ai-lab/harth-ml-experiments
 
   ##### Generative AI was used as a minor helping tool under the [Generative AI guidelines](https://github.com/mathworks/MATLAB-Simulink-Challenge-Project-Hub/wiki/Generative-AI-Guidelines)
   
