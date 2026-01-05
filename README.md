@@ -3,9 +3,12 @@
 ### Project Overview
 This project addresses the challenge of deploying Human Activity Recognition (HAR) on edge devices with limited processing power. We processed 50Hz accelerometer data from 2 three-axial Axivity AX3 accelerometers to classify distinct activities, including static postures (Sitting, Standing) and dynamic movements (Running, Cycling, Stairs). We used the harth dataset for this project (https://github.com/ntnu-ai-lab/harth-ml-experiments/tree/main/harth)
 
-#### This repo is a submission Solution to MATLAB and Simulink Challenge project <'232'> <'Human Motion Recognition Using IMUs'>
+This repo is a submission Solution to MATLAB and Simulink Challenge project <'232'> <'Human Motion Recognition Using IMUs'>
+
 [Program Link](https://github.com/mathworks/MATLAB-Simulink-Challenge-Project-Hub)
+
 [Project description Link](https://github.com/mathworks/MATLAB-Simulink-Challenge-Project-Hub/tree/main/projects/Human%20Motion%20Recognition%20Using%20IMUs)
+
 ---
 
 # Prerequisites & Setup
