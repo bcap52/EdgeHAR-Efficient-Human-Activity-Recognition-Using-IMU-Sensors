@@ -39,6 +39,34 @@ Use this option if you want to run the model immediately using the pre processed
 
 ### 2. Verify Files:
 * Ensure `src/`, `models/`, and `Data/processed/ProcessedData.mat` are present in your directory (these are included in the repo).
+* Make sure to follow this project structure on your machine:
+
+  #### 📂 Project Structure for Option 1
+
+```text
+EdgeHAR/
+│
+├── Data/                                        
+│   ├── processed/                               # Contains the .mat file used by the script
+│   │   └── ProcessedData.mat                    #pre processed data
+│   └── Link to download Training sets...txt     # Link to raw training data if you want to pursue option 2
+│
+├── models/                                      # Saved models directory
+│   └── trainedModel.mat                         # The pre trained classifier
+│
+├── src/                                         # Source code & workspaces
+│   ├── Classification_LearnerApp_Workspace.mat  # Session file for MATLAB App
+│   ├── Data_PreProcessing_FeatureEngineering.m  # Helper function for data processing
+│   └── trainClassifier.m                        # Helper function for model training
+│
+├── Testing Datasets/                            # Testing data directory
+│   └── Link to download testing sets.txt        # Link to testing CSVs
+│   └── [Testing CSVs]                           #Download the testing CSVs from the Drive Link provided in the text file above    
+│
+├── main_script.mlx                              # MAIN SCRIPT: Run this to start
+```
+
+
 
 ### 3. Run the Script:
 * Open `main_script.mlx` in MATLAB.
@@ -60,6 +88,31 @@ Use this option if you want to regenerate the dataset features from the raw CSV 
 * Create a folder named `Data` in the root directory and place all Training CSV files inside it.
 * Place the `Testing Datasets` folder in the root directory with all Testing CSV files inside it.
 * Ensure `src/`, `models/`, are present in your directory (these are included in the repo).
+
+   #### 📂 Project Structure for Option 2
+
+```text
+EdgeHAR/
+│
+├── Data/                                        
+│   ├── Link to download Training sets...txt     # Link to raw training data
+│   └──  [Raw Training Data]                     #Download the Raw Training Data from the Drive Link provided in the text file above
+│
+├── models/                                      # Saved models directory
+│   └── trainedModel.mat                         # The pre trained classifier
+│
+├── src/                                         # Source code & workspaces
+│   ├── Classification_LearnerApp_Workspace.mat  # Session file for MATLAB App
+│   ├── Data_PreProcessing_FeatureEngineering.m  # Helper function for data processing
+│   └── trainClassifier.m                        # Helper function for model training
+│
+├── Testing Datasets/                            # Testing data directory
+│   └── Link to download testing sets.txt        # Link to testing CSVs
+│   └── [Testing CSVs]                           #Download the testing CSVs from the Drive Link provided in the text file above    
+│
+├── main_script.mlx                              # MAIN SCRIPT: Run this to start
+```
+
 
 ### 4. Run the Script:
 * Open `main_script.mlx` and click **Run**.
