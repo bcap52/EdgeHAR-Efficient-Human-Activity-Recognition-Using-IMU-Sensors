@@ -38,7 +38,7 @@ Use this option if you want to run the model immediately using the pre processed
 * Place the `Testing Datasets` folder downloaded from the link in the root directory of this repository (same folder as `main_script.mlx`).
 
 ### 2. Verify Files:
-* Ensure `src/`, `models/`, and `Data/ProcessedData.mat` are present in your directory (these are included in the repo).
+* Ensure `src/`, `models/`, and `Data/processed/ProcessedData.mat` are present in your directory (these are included in the repo).
 
 ### 3. Run the Script:
 * Open `main_script.mlx` in MATLAB.
@@ -50,7 +50,7 @@ Use this option if you want to run the model immediately using the pre processed
 Use this option if you want to regenerate the dataset features from the raw CSV files yourself (e.g., if you want to see the preprocessing happen in real time).
 
 ### 1. Delete Existing Data:
-* Delete the file `Data/ProcessedData.mat` (if it exists).
+* Delete the file `Data/processed/ProcessedData.mat` (if it exists).
 
 ### 2. Download All Datasets:
 * **Training Data:** [Download Here](https://drive.google.com/drive/folders/1wDTIjdsdI3b8swcYLC1aKmRJAtfkY0Kp?usp=sharing)
