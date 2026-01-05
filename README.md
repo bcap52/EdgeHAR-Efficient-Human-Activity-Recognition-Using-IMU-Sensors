@@ -41,7 +41,7 @@ Use this option if you want to run the model immediately using the pre processed
 * Ensure `src/`, `models/`, and `Data/processed/ProcessedData.mat` are present in your directory (these are included in the repo).
 * Make sure to follow this project structure on your machine:
 
-  #### 📂 Project Structure for Option 1
+  ####  Project Structure for Option 1
 
 ```text
 EdgeHAR/
@@ -89,7 +89,7 @@ Use this option if you want to regenerate the dataset features from the raw CSV 
 * Place the `Testing Datasets` folder in the root directory with all Testing CSV files inside it.
 * Ensure `src/`, `models/`, are present in your directory (these are included in the repo).
 
-   #### 📂 Project Structure for Option 2
+   ####  Project Structure for Option 2
 
 ```text
 EdgeHAR/
