@@ -17,6 +17,7 @@ To run this project, ensure you have the following installed:
 
 * MATLAB (R2021a or later recommended)
 * Statistics and Machine Learning Toolbox
+* Signal Processing Toolbox
 
 # Getting Started
 
