@@ -71,7 +71,7 @@ This repository includes a saved session file for the Classification Learner App
 
 
 
-# Project Explaination
+# Project Details
 
 
 ### 1. Data Pipeline & Feature Engineering
@@ -137,7 +137,7 @@ This repository includes a saved session file for the Classification Learner App
 
 ---
 
-### 3. Performance Analysis
+### 3. Performance Analysis (Results)
 
 #### Overall Model Evaluation
 We evaluated two different models to determine the best balance between complexity and reliability using Matlab's Classification Learner App. While the Non-Linear KNN model achieved higher accuracy during training, it showed signs of slight overfitting.
