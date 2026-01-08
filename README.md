@@ -250,6 +250,7 @@ Performance degraded significantly for ambiguous activities or those with insuff
 
 - The pipeline is architected to be modular. If new raw accelerometer data (50Hz) is collected from an edge device, it can be passed through this same feature engineering pipeline.
 - The model immediately classifies new feature vectors and is architecturally optimized to be ported to edge devices with minimal adaptation.
+- The pipeline can be mapped to a Simulink feature extraction + classification block chain for deployment
 
 ## References 
  - We used the harth dataset as the foundation for this project available at: https://github.com/ntnu-ai-lab/harth-ml-experiments
