@@ -50,6 +50,8 @@ EdgeHAR/
 ├── Data/                                        
 │   ├── processed/                               # Contains the .mat file used by the script
 │   │   └── ProcessedData.mat                    #pre processed data
+    ├── Mobile Recordings/                       # MATLAB Mobile sensor recordings
+│   │   └── sensorlog_20260316_152037.mat        # Included mobile recording sessions  
 │   └── Link to download Training sets...txt     # Link to raw training data if you want to pursue option 2
 │
 ├── models/                                      # Saved models directory
@@ -96,8 +98,10 @@ Use this option if you want to regenerate the dataset features from the raw CSV 
 EdgeHAR/
 │
 ├── Data/                                        
+│   ├── Mobile Recordings/                       # MATLAB Mobile sensor recordings
+│   │   └── sensorlog_20260316_152037.mat        # Included mobile recording sessions
 │   ├── Link to download Training sets...txt     # Link to raw training data
-│   └──  [Raw Training Data]                     #Download the Raw Training Data from the Drive Link provided in the text file above
+│   └── [Raw Training Data]                      # Download the Raw Training Data from the Drive Link provided in the text file above
 │
 ├── models/                                      # Saved models directory
 │   └── trainedModel.mat                         # The pre trained classifier
@@ -109,7 +113,7 @@ EdgeHAR/
 │
 ├── Testing Datasets/                            # Testing data directory
 │   └── Link to download testing sets.txt        # Link to testing CSVs
-│   └── [Testing CSVs]                           #Download the testing CSVs from the Drive Link provided in the text file above    
+│   └── [Testing CSVs]                           # Download the testing CSVs from the Drive Link provided in the text file above    
 │
 ├── main_script.mlx                              # MAIN SCRIPT: Run this to start
 ```
@@ -242,8 +246,48 @@ Performance degraded significantly for ambiguous activities or those with insuff
   <em>Figure 2: Test Confusion Matrix displaying strong diagonal density for Static/Dynamic classes.</em>
 </div>
 
----
 
+### 4. MATLAB Mobile Integration
+
+I extended the pipeline to accept accelerometer recordings from a smartphone using MATLAB Mobile. The phone data goes through the same preprocessing, windowing, feature extraction, and classification stages used by the trained model. The included recording session `sensorlog_20260316_152037.mat` is already processed and saved in `ProcessedData.mat` alongside the training and testing data.
+
+The preprocessing pipeline handles the single-IMU constraint automatically. The training dataset uses two IMUs (back and thigh). Since a smartphone provides only one accelerometer stream, the phone is mapped to the thigh sensor position and the back sensor features are equated to thigh sensor features (we could also zero these features) to preserve the expected 12-column feature structure.
+
+To use your own recording:
+* Record a session using MATLAB Mobile and export the `.mat` file.
+* Place it in `Data/Mobile Recordings/`.
+* Update the filename in `Data_PreProcessing_FeatureEngineering.m` (Part 3) and delete `ProcessedData.mat` to trigger regeneration.
+
+#### Results
+
+We tested two recording sessions, both using a single phone.
+
+**Session 1: Standing, Walking, Standing**
+
+<div align="center">
+  <img src="Visualizations/session_1_predicted_activities.png" width="600" alt="Mobile Predicted Activities - Standing Walking Standing on file sensorlog_20260316_152037.mat">
+  <br>
+  <em>Figure 3: Predicted activities for a session where the subject stood, walked, then stood again. The walking segment in the middle is correctly identified. The standing portions at the start and end show misclassifications due to orientation sensitivity.</em>
+</div>
+
+The model correctly identifies the walking segment in the middle of the session. The standing portions at the start and end are misclassified as Cycling Inactive and other static activities. This is expected: the training dataset uses sensors with fixed body placement, and the model relies on the mean acceleration per axis to determine orientation. A phone held at a different angle produces a different mean signal for the same activity, which shifts the prediction.
+
+**Session 2: Running**
+
+<div align="center">
+  <img src="Visualizations/session_2_predicted_activities.png" width="600" alt="Mobile Predicted Activities - Running on file sensorlog_20260316_154116.mat">
+  <br>
+  <em>Figure 4: Predicted activities for a running session. The model correctly predicts Running for almost the entire duration. The final window drops to Lying, corresponding to the phone being set down at the end of the recording.</em>
+</div>
+
+The model correctly predicts Running for nearly the entire session. Only the last window drops to Lying, which corresponds to the phone being set down at the end of the recording. Running is well-detected because its signal is dominated by high variance regardless of phone orientation, making it less sensitive to placement differences.
+
+#### Known Limitations
+
+* **Orientation sensitivity.** The feature set uses mean and standard deviation per axis. Mean acceleration is directly affected by how gravity projects onto each axis, which changes with phone orientation. The dedicated IMUs in the training dataset were worn in fixed positions. A smartphone does not maintain the same orientation, so static activities like Standing are more likely to be misclassified.
+* **Single vs. dual IMU mismatch.** The model was trained on two sensors. Equating to thigh sensor features or zeroeing the back sensor features introduces a pattern the model has never seen during training, which reduces confidence for activities where the back sensor was informative.
+* **Dynamic activities are more robust.** Activities like Running produce high variance signals regardless of orientation, so they are less affected by placement differences. Static and low-intensity activities are more sensitive.
+---
 
 
  ## Scalability & Inference
