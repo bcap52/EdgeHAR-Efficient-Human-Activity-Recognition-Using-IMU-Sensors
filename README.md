@@ -264,21 +264,21 @@ We tested two recording sessions, both using a single phone.
 
 **Session 1: Standing, Walking, Standing**
 
-<div align="center">
+<p align="center">
   <img src="Visualizations/session_1_predicted_activities.png" width="600" alt="Mobile Predicted Activities - Standing Walking Standing on file sensorlog_20260316_152037.mat">
   <br>
   <em>Figure 3: Predicted activities for a session where the subject stood, walked, then stood again. The walking segment in the middle is correctly identified. The standing portions at the start and end show misclassifications due to orientation sensitivity.</em>
-</div>
+</p>
 
 The model correctly identifies the walking segment in the middle of the session. The standing portions at the start and end are misclassified as Cycling Inactive and other static activities. This is expected: the training dataset uses sensors with fixed body placement, and the model relies on the mean acceleration per axis to determine orientation. A phone held at a different angle produces a different mean signal for the same activity, which shifts the prediction.
 
 **Session 2: Running**
 
-<div align="center">
+<p align="center">
   <img src="Visualizations/session_2_predicted_activities.png" width="600" alt="Mobile Predicted Activities - Running on file sensorlog_20260316_154116.mat">
   <br>
   <em>Figure 4: Predicted activities for a running session. The model correctly predicts Running for almost the entire duration. The final window drops to Lying, corresponding to the phone being set down at the end of the recording.</em>
-</div>
+</p>
 
 The model correctly predicts Running for nearly the entire session. Only the last window drops to Lying, which corresponds to the phone being set down at the end of the recording. Running is well-detected because its signal is dominated by high variance regardless of phone orientation, making it less sensitive to placement differences.
 
