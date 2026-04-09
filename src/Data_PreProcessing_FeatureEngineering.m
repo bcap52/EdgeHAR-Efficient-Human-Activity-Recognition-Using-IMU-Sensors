@@ -210,7 +210,8 @@ function [Dataset_50HZ_Limited_Train_19974_eachclass, Dataset_50HZ_Limited_Test_
 
     % First, we will load the raw recording exported from MATLAB Mobile
     % Update the filename below to match your recording
-    load(fullfile(mobileFolder, 'sensorlog_20260316_152037 (1).mat'));   % provides: Acceleration
+    load(fullfile(mobileFolder, 'sensorlog_20260316_152037.mat'));   % provides: Acceleration
+    %change this file to another file from Data/Mobile Recordings if you want to use another Mobile dataset
     
 
     % The first second of data (50 samples at 50 Hz) is discarded to avoid
