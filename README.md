@@ -293,6 +293,7 @@ The model correctly predicts Running for nearly the entire session. Only the las
  ## Scalability & Inference
 
 - The pipeline is architected to be modular. If new raw accelerometer data (50Hz) is collected from an edge device, it can be passed through this same feature engineering pipeline.
+- MATLAB Mobile extends this to smartphones directly. A recorded session exports as a `.mat` file, feeds into the same preprocessing and windowing stages, and produces a prediction without   any changes to the classifier.
 - The model immediately classifies new feature vectors and is architecturally optimized to be ported to edge devices with minimal adaptation.
 - The pipeline can be mapped to a Simulink feature extraction + classification block chain for deployment
 
