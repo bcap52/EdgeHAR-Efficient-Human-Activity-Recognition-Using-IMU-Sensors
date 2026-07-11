@@ -92,8 +92,11 @@ function [Dataset_50HZ_Limited_Train_19974_eachclass, Dataset_50HZ_Limited_Test_
     % Windowing logic
     windowsize = 125;
     overlap_A = 0; % no stride
-    features_A = [];
-    labels_A = [];
+    numClasses = length(class_labels);
+    estWindowsPerClass = floor(target_num_of_rows / windowsize);
+    features_A = zeros(numClasses * estWindowsPerClass, 12);
+    labels_A = zeros(numClasses * estWindowsPerClass, 1);
+    rowIdx = 0;
     
     % Recalculate labels based on limited dataset
     class_labels = unique(IMU_Dataset_50HZ_Limited.label);
@@ -121,10 +124,14 @@ function [Dataset_50HZ_Limited_Train_19974_eachclass, Dataset_50HZ_Limited_Test_
               std(back_x_A)', std(back_y_A)', std(back_z_A)', std(thigh_x_A)', std(thigh_y_A)', std(thigh_z_A)'];
           
         lA = repmat(lbl, size(fA,1), 1);
-        features_A = [features_A; fA];
-        labels_A = [labels_A; lA];
+        nNew = size(fA, 1);
+        features_A(rowIdx+1:rowIdx+nNew, :) = fA;
+        labels_A(rowIdx+1:rowIdx+nNew) = lA;
+        rowIdx = rowIdx + nNew;
     end
 
+    features_A = features_A(1:rowIdx, :);
+    labels_A = labels_A(1:rowIdx);
     Dataset_50HZ_Limited_Train_19974_eachclass = array2table(features_A, ...
         'VariableNames', {'back_x_mean', 'back_y_mean','back_z_mean','thigh_x_mean','thigh_y_mean','thigh_z_mean', ...
                           'back_x_std','back_y_std','back_z_std','thigh_x_std','thigh_y_std','thigh_z_std'});
@@ -156,8 +163,11 @@ function [Dataset_50HZ_Limited_Train_19974_eachclass, Dataset_50HZ_Limited_Test_
     % Using your testing windowing logic
     windowsize = 125;
     overlap_A = 0; % for dataset without stride
-    features_A = [];
-    labels_A = [];
+    numTestClasses = length(class_labels);
+    estTestWindows = floor(height(IMU_Testing_Initial) / windowsize);
+    features_A = zeros(estTestWindows, 12);
+    labels_A = zeros(estTestWindows, 1);
+    rowIdx = 0;
 
     for i = 1:length(class_labels)
         lbl = class_labels(i);
@@ -182,10 +192,14 @@ function [Dataset_50HZ_Limited_Train_19974_eachclass, Dataset_50HZ_Limited_Test_
               std(back_x_A)', std(back_y_A)', std(back_z_A)', std(thigh_x_A)', std(thigh_y_A)', std(thigh_z_A)'];
           
         lA = repmat(lbl, size(fA,1), 1);
-        features_A = [features_A; fA];
-        labels_A = [labels_A; lA];
+        nNew = size(fA, 1);
+        features_A(rowIdx+1:rowIdx+nNew, :) = fA;
+        labels_A(rowIdx+1:rowIdx+nNew) = lA;
+        rowIdx = rowIdx + nNew;
     end
 
+    features_A = features_A(1:rowIdx, :);
+    labels_A = labels_A(1:rowIdx);
     Dataset_50HZ_Limited_Test_Final = array2table(features_A, ...
         'VariableNames', {'back_x_mean', 'back_y_mean','back_z_mean','thigh_x_mean','thigh_y_mean','thigh_z_mean', ...
                           'back_x_std','back_y_std','back_z_std','thigh_x_std','thigh_y_std','thigh_z_std'});
@@ -210,7 +224,7 @@ function [Dataset_50HZ_Limited_Train_19974_eachclass, Dataset_50HZ_Limited_Test_
 
     % First, we will load the raw recording exported from MATLAB Mobile
     % Update the filename below to match your recording
-    load(fullfile(mobileFolder, 'sensorlog_20260316_152037.mat'));   % provides: Acceleration
+    load(fullfile(mobileFolder, 'sensorlog_20260316_152037.mat'), 'Acceleration');
     
 
     % The first second of data (50 samples at 50 Hz) is discarded to avoid
@@ -245,6 +259,26 @@ function [Dataset_50HZ_Limited_Train_19974_eachclass, Dataset_50HZ_Limited_Test_
           std(thigh_x_A)',  std(thigh_y_A)',  std(thigh_z_A)'];
 
     features_A = [features_A; fA];
+
+    load(fullfile(mobileFolder, 'sensorlog_20260316_154116.mat'), 'Acceleration');
+
+    thigh_x_raw2 = Acceleration.X(351:end);
+    thigh_y_raw2 = Acceleration.Y(351:end);
+    thigh_z_raw2 = Acceleration.Z(351:end);
+
+    thigh_x_A2 = buffer(thigh_x_raw2, windowsize, overlap_A, 'nodelay');
+    thigh_y_A2 = buffer(thigh_y_raw2, windowsize, overlap_A, 'nodelay');
+    thigh_z_A2 = buffer(thigh_z_raw2, windowsize, overlap_A, 'nodelay');
+
+    back_x_A2 = thigh_x_A2;
+    back_y_A2 = thigh_y_A2;
+    back_z_A2 = thigh_z_A2;
+    fA2 = [mean(back_x_A2)',  mean(back_y_A2)',  mean(back_z_A2)', ...
+           mean(thigh_x_A2)', mean(thigh_y_A2)', mean(thigh_z_A2)', ...
+           std(back_x_A2)',   std(back_y_A2)',   std(back_z_A2)', ...
+           std(thigh_x_A2)',  std(thigh_y_A2)',  std(thigh_z_A2)'];
+
+    features_A = [features_A; fA2];
 
     % The feature structure must match the format expected by the trained model
     mobile_features = array2table(features_A, ...

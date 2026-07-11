@@ -34,12 +34,11 @@ You have two options for running this project.
 
 Use this option if you want to run the model immediately using the pre processed data and pre trained model included in this repository.
 
-### 1. Download Testing Data:
-* Download the Testing Datasets folder from this link: [Download Test Data](https://drive.google.com/drive/folders/1Z_0K0mR285lMQ2ECFdFmGVpV7OdgCjWs?usp=sharing)
-* Place the `Testing Datasets` folder downloaded from the link in the root directory of this repository (same folder as `main_script.mlx`).
+### 1. Testing Data:
+* The testing CSV files are already included in the `Testing Datasets/` folder of this repository. No download is needed.
 
 ### 2. Verify Files:
-* Ensure `src/`, `models/`, and `Data/processed/ProcessedData.mat` are present in your directory (these are included in the repo).
+* Ensure `src/`, `models/`, `Testing Datasets/`, and `Data/processed/ProcessedData.mat` are present in your directory (these are all included in the repo).
 * Make sure to follow this project structure on your machine:
 
   ####  Project Structure for Option 1
@@ -49,10 +48,12 @@ EdgeHAR/
 │
 ├── Data/                                        
 │   ├── processed/                               # Contains the .mat file used by the script
-│   │   └── ProcessedData.mat                    #pre processed data
-    ├── Mobile Recordings/                       # MATLAB Mobile sensor recordings
-│   │   └── sensorlog_20260316_152037.mat        # Included mobile recording sessions  
-│   └── Link to download Training sets...txt     # Link to raw training data if you want to pursue option 2
+│   │   └── ProcessedData.mat                    # Pre processed data
+│   ├── Mobile Recordings/                       # MATLAB Mobile sensor recordings
+│   │   ├── sensorlog_20260316_152037.mat        # Included mobile recording sessions
+│   │   └── sensorlog_20260316_154116.mat
+│   ├── S020.csv, S006.csv, ...                  # Training CSV files (included)
+│   └── Link to download Training sets...txt     # Link to original HARTH dataset
 │
 ├── models/                                      # Saved models directory
 │   └── trainedModel.mat                         # The pre trained classifier
@@ -62,9 +63,8 @@ EdgeHAR/
 │   ├── Data_PreProcessing_FeatureEngineering.m  # Helper function for data processing
 │   └── trainClassifier.m                        # Helper function for model training
 │
-├── Testing Datasets/                            # Testing data directory
-│   └── Link to download testing sets.txt        # Link to testing CSVs
-│   └── [Testing CSVs]                           #Download the testing CSVs from the Drive Link provided in the text file above    
+├── Testing Datasets/                            # Testing data directory (included in repo)
+│   └── S016.csv, S025.csv, ...                  # Testing CSV files (included)
 │
 ├── main_script.mlx                              # MAIN SCRIPT: Run this to start
 ```
@@ -83,14 +83,10 @@ Use this option if you want to regenerate the dataset features from the raw CSV 
 ### 1. Delete Existing Data:
 * Delete the file `Data/processed/ProcessedData.mat` (if it exists).
 
-### 2. Download All Datasets:
-* **Training Data:** [Download Here](https://drive.google.com/drive/folders/1wDTIjdsdI3b8swcYLC1aKmRJAtfkY0Kp?usp=sharing)
-* **Testing Data:** [Download Here](https://drive.google.com/drive/folders/1Z_0K0mR285lMQ2ECFdFmGVpV7OdgCjWs?usp=sharing)
-
-### 3. Organize Folders:
-* Create a folder named `Data` in the root directory and place all Training CSV files inside it.
-* Place the `Testing Datasets` folder in the root directory with all Testing CSV files inside it.
-* Ensure `src/`, `models/`, are present in your directory (these are included in the repo).
+### 2. Verify Data:
+* **Training Data:** Already included in the `Data/` folder of this repository.
+* **Testing Data:** Already included in the `Testing Datasets/` folder of this repository.
+* Ensure `src/`, `models/`, `Data/`, and `Testing Datasets/` are present in your directory (these are all included in the repo).
 
    ####  Project Structure for Option 2
 
@@ -99,9 +95,10 @@ EdgeHAR/
 │
 ├── Data/                                        
 │   ├── Mobile Recordings/                       # MATLAB Mobile sensor recordings
-│   │   └── sensorlog_20260316_152037.mat        # Included mobile recording sessions
-│   ├── Link to download Training sets...txt     # Link to raw training data
-│   └── [Raw Training Data]                      # Download the Raw Training Data from the Drive Link provided in the text file above
+│   │   ├── sensorlog_20260316_152037.mat        # Included mobile recording sessions
+│   │   └── sensorlog_20260316_154116.mat
+│   ├── S020.csv, S006.csv, ...                  # Training CSV files (included)
+│   └── Link to download Training sets...txt     # Link to original HARTH dataset
 │
 ├── models/                                      # Saved models directory
 │   └── trainedModel.mat                         # The pre trained classifier
@@ -111,15 +108,14 @@ EdgeHAR/
 │   ├── Data_PreProcessing_FeatureEngineering.m  # Helper function for data processing
 │   └── trainClassifier.m                        # Helper function for model training
 │
-├── Testing Datasets/                            # Testing data directory
-│   └── Link to download testing sets.txt        # Link to testing CSVs
-│   └── [Testing CSVs]                           # Download the testing CSVs from the Drive Link provided in the text file above    
+├── Testing Datasets/                            # Testing data directory (included in repo)
+│   └── S016.csv, S025.csv, ...                  # Testing CSV files (included)
 │
 ├── main_script.mlx                              # MAIN SCRIPT: Run this to start
 ```
 
 
-### 4. Run the Script:
+### 3. Run the Script:
 * Open `main_script.mlx` and click **Run**.
 * The script will detect that the processed data is missing and will automatically start reading the raw CSVs, windowing the data, and extracting features before training the model.
 
